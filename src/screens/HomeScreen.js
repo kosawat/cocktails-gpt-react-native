@@ -16,6 +16,7 @@ import { StatusBar } from "expo-status-bar";
 import QuestionsForm from "../components/QuestionsForm";
 import LoadingScreen from "./LoadingScreen";
 import ResultScreen from "./ResultScreen";
+import { getDrinkIdeas } from "../api/api";
 
 export default function HomeScreen() {
   const [base, setBase] = useState("");
@@ -29,26 +30,20 @@ export default function HomeScreen() {
   const [result, setResult] = useState("");
 
   const handleFormSubmit = async () => {
-    // console.log("Submit: ", base, flavor, fruit, strength, restriction);
     if (loading) {
       return;
     }
     setLoading(true);
     setResult("");
     try {
-      const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BASE_API_URL}/drinkideas`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ base, flavor, strength, fruit, restriction }),
-        }
+      const response = await getDrinkIdeas(
+        base,
+        flavor,
+        fruit,
+        strength,
+        restriction
       );
-      const data = await response.json();
-      setResult(data.result);
-      //   console.log(data.result);
+      setResult(response);
     } catch (err) {
       Alert.alert("Couldn't generate cocktails idea.", err.message);
     } finally {
