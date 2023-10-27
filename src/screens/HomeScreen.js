@@ -5,7 +5,6 @@ import {
   TextInput,
   ScrollView,
   SafeAreaView,
-  TouchableOpacity,
   Pressable,
   KeyboardAvoidingView,
   Platform,
@@ -148,12 +147,9 @@ export default function HomeScreen() {
               onChangeText={setRestriction}
             />
 
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleFormSubmit()}
-            >
+            <Pressable style={styles.button} onPress={() => handleFormSubmit()}>
               <Text style={styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
+            </Pressable>
           </ScrollView>
 
           <StatusBar style="auto" />
