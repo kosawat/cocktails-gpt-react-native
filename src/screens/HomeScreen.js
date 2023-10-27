@@ -15,6 +15,7 @@ import { StatusBar } from "expo-status-bar";
 
 import QuestionsForm from "../components/QuestionsForm";
 import LoadingScreen from "./LoadingScreen";
+import ResultScreen from "./ResultScreen";
 
 export default function HomeScreen() {
   const [base, setBase] = useState("");
@@ -64,19 +65,7 @@ export default function HomeScreen() {
   };
 
   if (result) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <Text style={styles.title}>
-            Here are some great cocktails ideas for you! 🍹 💡
-          </Text>
-          <Text style={styles.result}>{result}</Text>
-          <Pressable onPress={onTryAgain} style={styles.button}>
-            <Text style={styles.buttonText}>Try again</Text>
-          </Pressable>
-        </ScrollView>
-      </SafeAreaView>
-    );
+    return <ResultScreen result={result} onTryAgain={onTryAgain} />;
   }
 
   return (
@@ -212,7 +201,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "gray",
   },
-  // button
   button: {
     marginTop: "auto",
     backgroundColor: "#10a37f",
@@ -224,9 +212,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
-  },
-
-  result: {
-    padding: 10,
   },
 });
