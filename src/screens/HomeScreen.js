@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 
 import QuestionsForm from "../components/QuestionsForm";
+import LoadingScreen from "./LoadingScreen";
 
 export default function HomeScreen() {
   const [base, setBase] = useState("");
@@ -55,14 +56,7 @@ export default function HomeScreen() {
   };
 
   if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Text style={styles.title}>
-          Looking for the perfect cocktails ideas 🍹 💡
-        </Text>
-        <Text>Loading ...</Text>
-      </View>
-    );
+    return <LoadingScreen />;
   }
 
   const onTryAgain = () => {
@@ -231,12 +225,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  loadingContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    padding: 10,
-  },
+
   result: {
     padding: 10,
   },
