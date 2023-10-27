@@ -50,5 +50,6 @@ const styles = StyleSheet.create({
   },
   result: {
     padding: 10,
+    fontSize: 16,
   },
 });
