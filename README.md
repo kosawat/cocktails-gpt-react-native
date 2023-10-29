@@ -60,3 +60,6 @@ Create a .env.local file in the project root and set the url of API Server:
 2. Answer a series of questions about your cocktail preferences.
 3. The app will generate cocktail ideas with recipes and instructions.
 4. If you want to start a new search, use the "Try Again" button.
+
+## License
+This project is licensed under the MIT License.
